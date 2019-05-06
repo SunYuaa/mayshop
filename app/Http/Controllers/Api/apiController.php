@@ -14,11 +14,20 @@ class apiController extends Controller
     {
         $id = request()->input();
         $userInfo = WxUsersModel::where(['id'=>$id])->first();
+        $data = [];
         if($userInfo){
-            var_dump($userInfo->toArray());
+//            var_dump($userInfo->toArray());
+            $data = [
+                'errcode' => 0,
+                'errmsg' => 'success'
+            ];
         }else{
-            echo '查无此人';
+            $data = [
+                'errcode' => 22001,
+                'errmsg' => 'fail'
+            ];
         }
+        return json_encode($data);
 
     }
 
@@ -44,5 +53,15 @@ class apiController extends Controller
             ];
         }
         return json_encode($data);
+    }
+
+    //
+    public function test()
+    {
+        echo __METHOD__;echo '<br/>';
+        var_dump($_POST);echo '<br/>';
+
+        $str = file_get_contents('php://input');
+        echo $str;
     }
 }

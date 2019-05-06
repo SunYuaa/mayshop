@@ -18,3 +18,5 @@ Route::get('/', function () {
 //api
 Route::get('/api/getM','Api\apiController@getM');     //get方式
 Route::post('/api/postM','Api\apiController@postM');  //post方式
+
+Route::post('/api/test','Api\apiController@test');
