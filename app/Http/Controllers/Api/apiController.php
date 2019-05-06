@@ -64,4 +64,10 @@ class apiController extends Controller
         $str = file_get_contents('php://input');
         echo $str;
     }
+
+    //全局中间件
+    public function reqMid()
+    {
+        echo __METHOD__;
+    }
 }
