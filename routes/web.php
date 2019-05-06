@@ -23,3 +23,7 @@ Route::post('/api/test','Api\apiController@test');
 
 //全局中间件
 Route::get('/api/reqMid','Api\apiController@reqMid')->middleware('request10Times');
+
+//用户登录注册
+Route::get('/user/register','User\userController@register');  
+Route::get('/user/login','User\userController@login');

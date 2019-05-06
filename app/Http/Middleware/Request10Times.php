@@ -16,7 +16,9 @@ class Request10Times
      */
     public function handle($request, Closure $next)
     {
-        $key = 'request10Times';
+        $ip =  $_SERVER['SERVER_ADDR'];  //192.168.140.129
+
+        $key = $ip.'request10Times';
         $num = Redis::get($key);
         if($num>10){
             die('请求时间次数超过限制');
