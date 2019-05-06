@@ -25,5 +25,5 @@ Route::post('/api/test','Api\apiController@test');
 Route::get('/api/reqMid','Api\apiController@reqMid')->middleware('request10Times');
 
 //用户登录注册
-Route::get('/user/register','User\userController@register');  
-Route::get('/user/login','User\userController@login');
+Route::post('/user/register','User\userController@register');
+Route::post('/user/login','User\userController@login');
