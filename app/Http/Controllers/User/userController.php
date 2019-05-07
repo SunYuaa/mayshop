@@ -69,7 +69,7 @@ class userController extends Controller
         if($user){
             //用户存在   验证密码
             if (password_verify($pass,$user->password)){
-                //获取token
+                //获取token redis存储
                 $token = $this->getLoginToken($user->id);
                 $login_token_key = 'login_token:id:'.$user->id;
                 Redis::set($login_token_key,$token);
@@ -95,6 +95,12 @@ class userController extends Controller
             ];
         }
         die(json_encode($response,JSON_UNESCAPED_UNICODE));
+    }
+
+    //个人中心
+    public function userCenter()
+    {
+        echo __METHOD__;
     }
 
     /**

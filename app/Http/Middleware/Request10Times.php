@@ -17,17 +17,18 @@ class Request10Times
     public function handle($request, Closure $next)
     {
         $ip =  $_SERVER['SERVER_ADDR'];  //192.168.140.129
-
-        $key = $ip.'request10Times';
+        $key = 'request10Times:ip:'.$ip.':token:'.$request->input('token');
         $num = Redis::get($key);
         if($num>10){
             die('请求时间次数超过限制');
         }
-        echo 'num:'.$num;echo '<br/>';
+        echo '<hr/>';
+        echo 'num:'.$num;
+        echo 'key:'.$key;
+        echo '<hr/>';
+        
         Redis::incr($key);
         Redis::expire($key,10);
-
-        echo date('Y-m-d H:i:s');echo '<hr/>';
 
         return $next($request);
     }
