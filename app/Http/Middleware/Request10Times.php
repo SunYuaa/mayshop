@@ -26,7 +26,7 @@ class Request10Times
         echo 'num:'.$num;
         echo 'key:'.$key;
         echo '<hr/>';
-        
+
         Redis::incr($key);
         Redis::expire($key,10);
 

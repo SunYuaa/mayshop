@@ -27,4 +27,7 @@ Route::get('/api/reqMid','Api\apiController@reqMid')->middleware('request10Times
 //用户登录注册
 Route::post('/user/register','User\userController@register');
 Route::post('/user/login','User\userController@login');
-Route::get('/user/userCenter','User\userController@userCenter')->middleware(['checkLogin','request10Times']);  //个人中心
+Route::get('/user/userCenter','User\userController@userCenter')->middleware('checkLogin','request10Times');  //个人中心
+
+//资源控制器
+Route::respurce('/test/',ResourceController::class);
